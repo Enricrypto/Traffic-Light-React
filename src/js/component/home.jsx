@@ -1,24 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+
+	const [color, setColor] = useState({
+		red: "",
+		yellow: "",
+		green: ""
+	});
+
+
+useEffect(() => {
+	
+	setColor({red: "shine"})
+}, []); 
+
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div>
+			<div className="trafficLight">
+				<div className="container">
+					<div className={"circle red " + color.red} onClick={() => setColor({
+						red: "shine",
+						yellow: "",
+						green: ""
+					})}>
+					</div>
+					<div className={"circle yellow " + color.yellow} onClick={() => setColor({
+						red: "",
+						yellow: "shine",
+						green: ""
+					})}></div>
+					<div className={"circle green " + color.green} onClick={() => setColor({
+						red: "",
+						yellow: "",
+						green: "shine"
+					})}>
+					</div>
+				</div>
+				<div className="button">
+				<button type="button" className="btn btn-secondary" >Cycle Color</button>
+				</div>
+				<div className="button">
+				<button type="button" className="btn btn-secondary" >Add Color</button>
+				</div>
+			</div>
 		</div>
 	);
 };
